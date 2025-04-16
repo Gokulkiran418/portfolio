@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .navigation {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f8f9fa;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .navigation .list-group-item {
+      border: none;
+      padding: 10px 0;
+    }
+    .navigation a {
+      color: #333;
+      text-decoration: none;
+    }
+    .navigation a:hover {
+      color: #007bff;
+    }
+    .main-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    #hero {
+      height: 100vh;
+      background-color: #f1f3f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .projects-grid .card {
+      margin-bottom: 20px;
+    }
+    section {
+      padding: 40px 0;
+    }
+    @media (max-width: 768px) {
+      .navigation {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React and Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.9/babel.min.js"></script>
+
+  <!-- Data File -->
+  <script type="text/javascript">
+    const data = {
+      projects: [
+        {
+          title: "Project 1",
+          description: "A web application built with React and Node.js.",
+          technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+          liveLink: "#",
+          sourceLink: "#",
+          image: "https://via.placeholder.com/300x200"
+        },
+        {
+          title: "Project 2",
+          description: "A responsive portfolio website.",
+          technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+          liveLink: "#",
+          sourceLink: "#",
+          image: "https://via.placeholder.com/300x200"
+        }
+      ],
+      skills: ["HTML", "CSS", "JavaScript", "React", "Node.js", "Express.js", "MongoDB", "Git"],
+      experience: [
+        {
+          company: "Company A",
+          role: "Full-Stack Developer",
+          duration: "2020 - Present",
+          description: "Developed and maintained web applications using MERN stack."
+        }
+      ],
+      certificates: [
+        { name: "React Developer Certificate", issuer: "Coursera", date: "2022" }
+      ],
+      education: [
+        { degree: "B.S. in Computer Science", institution: "University XYZ", date: "2016-2020" }
+      ],
+      contact: {
+        email: "john.doe@example.com",
+        linkedin: "https://linkedin.com/in/johndoe",
+        github: "https://github.com/johndoe"
+      }
+    };
+  </script>
+
+  <!-- React Components -->
+  <script type="text/babel">
+    function Navigation() {
+      return (
+        <div className="navigation">
+          <ul className="list-group">
+            <li className="list-group-item"><a href="#hero">Home</a></li>
+            <li className="list-group-item"><a href="#projects">Projects</a></li>
+            <li className="list-group-item"><a href="#skills">Skills</a></li>
+            <li className="list-group-item"><a href="#experience">Experience</a></li>
+            <li className="list-group-item"><a href="#certificates">Certificates</a></li>
+            <li className="list-group-item"><a href="#education">Education</a></li>
+            <li className="list-group-item"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section id="hero">
+          <div>
+            <h1>John Doe</h1>
+            <p>Full-Stack Developer</p>
+            <p>Building modern web applications with React and Node.js</p>
+            <a href="#projects" className="btn btn-primary me-2">View Projects</a>
+            <a href="#contact" className="btn btn-secondary">Contact Me</a>
+          </div>
+        </section>
+      );
+    }
+
+    function ProjectCard({ project }) {
+      return (
+        <div className="card">
+          <img src={project.image} className="card-img-top" alt={project.title} />
+          <div className="card-body">
+            <h5 className="card-title">{project.title}</h5>
+            <p className="card-text">{project.description}</p>
+            <p>Technologies: {project.technologies.join(", ")}</p>
+            <a href={project.liveLink} className="btn btn-primary me-2">Live Demo</a>
+            <a href={project.sourceLink} className="btn btn-secondary">Source Code</a>
+          </div>
+        </div>
+      );
+    }
+
+    function Projects() {
+      return (
+        <section id="projects">
+          <h2>Projects</h2>
+          <div className="projects-grid row">
+            {data.projects.map((project, index) => (
+              <div className="col-md-4" key={index}>
+                <ProjectCard project={project} />
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Skills() {
+      return (
+        <section id="skills">
+          <h2>Skills</h2>
+          <div className="row">
+            {data.skills.map((skill, index) => (
+              <div className="col-md-3" key={index}>
+                <p>{skill}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Experience() {
+      return (
+        <section id="experience">
+          <h2>Experience</h2>
+          {data.experience.map((exp, index) => (
+            <div key={index} className="mb-3">
+              <h5>{exp.role} - {exp.company}</h5>
+              <p>{exp.duration}</p>
+              <p>{exp.description}</p>
+            </div>
+          ))}
+        </section>
+      );
+    }
+
+    function Certificates() {
+      return (
+        <section id="certificates">
+          <h2>Certificates</h2>
+          <ul>
+            {data.certificates.map((cert, index) => (
+              <li key={index}>{cert.name} - {cert.issuer} ({cert.date})</li>
+            ))}
+          </ul>
+        </section>
+      );
+    }
+
+    function Education() {
+      return (
+        <section id="education">
+          <h2>Education</h2>
+          {data.education.map((edu, index) => (
+            <div key={index}>
+              <h5>{edu.degree}</h5>
+              <p>{edu.institution} ({edu.date})</p>
+            </div>
+          ))}
+        </section>
+      );
+    }
+
+    function Contact() {
+      return (
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>Email: <a href={`mailto:${data.contact.email}`}>{data.contact.email}</a></p>
+          <p>LinkedIn: <a href={data.contact.linkedin}>{data.contact.linkedin}</a></p>
+          <p>GitHub: <a href={data.contact.github}>{data.contact.github}</a></p>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <div>
+          <Navigation />
+          <div className="main-content">
+            <Hero />
+            <Projects />
+            <Skills />
+            <Experience />
+            <Certificates />
+            <Education />
+            <Contact />
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
