@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gokul Kiran Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- React and Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.7/babel.min.js"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #f1f3f5; /* Page background */
+    }
+    .navigation {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #f1f3f5; /* Matches page background */
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .main-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+    #hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+      padding: 0 10px;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .content-box {
+      background-color: #e5e7eb; /* Slightly darker than page */
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    @media (min-width: 768px) {
+      .carousel-item {
+        flex: 0 0 50%; /* Two projects per slide on desktop */
+      }
+    }
+    @media (max-width: 768px) {
+      .navigation {
+        position: static;
+        width: 100%;
+        height: auto;
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+    @media(max-width:668){
+      .contactsize {
+        font-size: small;
+      }
+    }
+    .gradient-background {
+      background: linear-gradient(300deg, #FFFFFF,#D3D3D3,#808080);
+      background-size: 180% 180%;
+      animation: gradient-animation 18s ease infinite;
+    }
+    
+    @keyframes gradient-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Data File -->
+  <script type="text/javascript">
+    const data = {
+      projects: [
+        {
+          title: "Weather Dashboard",
+          description: "A web app displaying real-time weather data using the OpenWeatherMap API, with responsive UI and search history.",
+          technologies: ["React", "Node.js", "Express.js", "Bootstrap", "OpenWeatherMap API"],
+        },
+        {
+          title: "Task Manager",
+          description: "A simple CRUD app for managing tasks with user authentication.",
+          technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+        },
+        {
+          title: "Menu & Table Boooking WebApp",
+          description: "A website that allows user to view the menu and book tables at a restaurant. A mail containing the booking details is sent to the restaurant owner using mailgun.",
+          technologies: ["Python", "Flask", "Mailgun", "AWS S3 bucket"],
+        },
+        {
+          title: "E-commerce Site",
+          description: "A sample online store with product listings and cart functionality.",
+          technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+        }
+      ],
+      skills: [
+        { category: "Programming Languages", items: ["Python", "Java", "C++"] },
+        { category: "Database", items: ["MySQL", "PostgreSQL","MongoDB"] },
+        { category: "Front-end", items: ["HTML", "CSS", "JavaScript","Bootstrap", "React" ] },
+        { category: "Back-end", items: ["Node.js", "Express.js","Flask"] },
+        { category: "Python Libraries", items: ["Tensorflow", "Scikit-Learn", "Pandas","NumPy","Matplotlib"] },
+        { category: "Tools and Technologies", items: ["Git","GitHub Copilot","ChatGPT","RESTful APIs"] }
+      ],
+      certificates: [
+        { name: "Full Stack Web Development Bootcamp; Author: Angela Yu", issuer: "Udemy", date: "2025" },
+        { name: "100 Days of Code: Complete Python Bootcamp", issuer: "Udemy", date: "2024" },
+        { name: "OpenAI GPTs: Creating Custom AI Assistants", issuer: "Coursera", date: "2024" },
+      ],
+      education: [
+        { degree: "B.E. in Computer Science", institution: "Misrimal Navajee Munoth Jain Engineering College (Non-Autonomous)", date: "2020-2024", CGPA: "CGPA - 8.2" }
+      ],
+      contact: {
+        email: "umgokulkiran@gmail.com",
+        linkedin: "https://linkedin.com/in/gokul-kiran21",
+        github: "https://github.com/gokulkiran418"
+      }
+    };
+  </script>
+
+  <!-- React Components -->
+  <script type="text/babel">
+    function Navigation() {
+      return (
+        <div className="navigation ">
+          <ul className="space-y-3">
+            <li><a href="#hero" className="text-gray-800 text-lg hover:text-blue-500">Home</a></li>
+            <li><a href="#projects" className="text-gray-800 text-lg hover:text-blue-500">Projects</a></li>
+            <li><a href="#skills" className="text-gray-800 text-lg hover:text-blue-500">Skills</a></li>
+            <li><a href="#certificates" className="text-gray-800 text-lg hover:text-blue-500">Certificates</a></li>
+            <li><a href="#education" className="text-gray-800 text-lg hover:text-blue-500">Education</a></li>
+            <li><a href="#contact" className="text-gray-800 text-lg hover:text-blue-500">Contact</a></li>
+          </ul>
+        </div>
+      );
+    }
+
+    function Hero() {
+      return (
+        <section id="hero" className="text-gray-800 fade-in" class="gradient-background">
+          <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="w-64 h-64 rounded-full overflow-hidden mx-auto mb-4 border-2 border-gray-200">
+              <img
+                src="./Gokul_img.jpg"
+                alt="John Doe"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <h1 className="text-4xl font-bold text-blue-600">Gokul Kiran</h1>
+            <p className="text-xl mt-2 font-medium">Full-Stack Developer</p>
+            <p className="mt-4 max-w-md mx-auto text-gray-600"> Passionate about Building Innovative Web and AI Solutions</p>
+            <div className="mt-6 space-x-4">
+              
+              <a href="#contact" className="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors duration-200">Contact Me</a>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ProjectCard({ project }) {
+      return (
+        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          
+          <div className="p-4">
+            <h3 className="text-xl font-semibold">{project.title}</h3>
+            <p className="text-gray-600 mt-2">{project.description}</p>
+            <p className="text-gray-500 mt-2">Technologies: {project.technologies.join(", ")}</p>
+          </div>
+        </div>
+      );
+    }
+
+    function Projects() {
+      const [currentIndex, setCurrentIndex] = React.useState(0);
+      const projectsPerSlide = window.innerWidth >= 768 ? 2 : 1;
+      const maxIndex = Math.ceil(data.projects.length / projectsPerSlide) - 1;
+
+      const handleNext = () => {
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+      };
+
+      const handlePrev = () => {
+        setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+      };
+
+      return (
+        <section id="projects" className="py-12">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Projects</h2>
+          <div className="flex justify-center space-x-4 mb-4">
+            {currentIndex > 0 && (
+              <button
+                onClick={handlePrev}
+                className="bg-blue-500 text-white p-4 rounded-full hover:bg-blue-600"
+              >
+                ←
+              </button>
+            )}
+            <button
+              onClick={handleNext}
+              className="bg-blue-500 text-white p-4 rounded-full hover:bg-blue-600"
+            >
+              →
+            </button>
+          </div>
+          <div className="carousel-container">
+            <div
+              className="carousel"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {data.projects.map((project, index) => (
+                <div key={index} className="carousel-item">
+                  <ProjectCard project={project} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Skills() {
+      return (
+        <section id="skills" className="py-12 fade-in">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Skills</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {data.skills.map((skillGroup, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <h3 className="text-xl font-semibold text-gray-800">{skillGroup.category}</h3>
+                <ul className="list-none mt-2 space-y-2">
+                  {skillGroup.items.map((item, i) => (
+                    <li key={i} className="text-gray-600 flex items-center">
+                      <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Certificates() {
+      return (
+        <section id="certificates" className="py-12 fade-in">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Certificates</h2>
+          <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <ul className="list-none space-y-2">
+              {data.certificates.map((cert, index) => (
+                <li key={index} className="text-gray-600 flex items-center">
+                  <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  {cert.name} - {cert.issuer} ({cert.date})
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      );
+    }
+
+    function Education() {
+      return (
+        <section id="education" className="py-12 fade-in">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Education</h2>
+          {data.education.map((edu, index) => (
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 mb-6"
+            >
+              <h3 className="text-xl font-semibold text-gray-800">{edu.degree}</h3>
+              <p className="text-gray-500">{edu.institution} ({edu.date})</p>
+              <p className="text-gray-500">{edu.CGPA}</p>
+            </div>
+          ))}
+        </section>
+      );
+    }
+
+    function Contact() {
+      return (
+        <section id="contact" className="py-12 fade-in">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Contact</h2>
+          <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <p className="text-gray-600 flex items-center" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Email: <a href={`mailto:${data.contact.email}`} target="_blank" className="text-blue-500 hover:underline ml-1">{data.contact.email}</a>
+            </p>
+            <p className="text-gray-600 flex items-center mt-2" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              LinkedIn: <a href={data.contact.linkedin} target="_blank" className="text-blue-500 hover:underline ml-1">{data.contact.linkedin}</a>
+            </p>
+            <p className="text-gray-600 flex items-center mt-2" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              GitHub: <a href={data.contact.github} target="_blank" className="text-blue-500 hover:underline ml-1">{data.contact.github}</a>
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      React.useEffect(() => {
+        const sections = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+        return () => sections.forEach(section => observer.unobserve(section));
+      }, []);
+
+      return (
+        <div>
+          <Navigation />
+          <div className="main-content">
+            <div className="content-box py-5 px-6">
+              <Hero />
+              <Projects />
+              <Skills />
+              <Certificates />
+              <Education />
+              <Contact />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
