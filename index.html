@@ -113,23 +113,27 @@
       projects: [
         {
           title: "Weather Dashboard",
-          description: "A web app displaying real-time weather data using the OpenWeatherMap API, with responsive UI and search history.",
-          technologies: ["React", "Node.js", "Express.js", "Bootstrap", "OpenWeatherMap API"],
+          description: "A web app displaying real-time weather data using the OpenWeatherMap API, with responsive UI and search history. Background is a gradient color animation that changes with temperature.",
+          technologies: ["Bootstrap", "OpenWeatherMap API", "JavaScript"],
+          link:"https://weather-app-pi-nine-34.vercel.app"
         },
         {
           title: "Task Manager",
           description: "A simple CRUD app for managing tasks with user authentication.",
           technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+          link: "#"
         },
         {
           title: "Menu & Table Boooking WebApp",
           description: "A website that allows user to view the menu and book tables at a restaurant. A mail containing the booking details is sent to the restaurant owner using mailgun.",
           technologies: ["Python", "Flask", "Mailgun", "AWS S3 bucket"],
+          link: " #"
         },
         {
           title: "E-commerce Site",
           description: "A sample online store with product listings and cart functionality.",
           technologies: ["React", "Node.js", "Express.js", "MongoDB"],
+          link : "# "
         }
       ],
       skills: [
@@ -204,6 +208,18 @@
             <h3 className="text-xl font-semibold">{project.title}</h3>
             <p className="text-gray-600 mt-2">{project.description}</p>
             <p className="text-gray-500 mt-2">Technologies: {project.technologies.join(", ")}</p>
+            {project.link && (
+              <p className="mt-2">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
+                  View My Project
+                </a>
+              </p>
+            )}
           </div>
         </div>
       );
