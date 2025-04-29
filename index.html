@@ -15,7 +15,7 @@
       scroll-behavior: smooth;
     }
     body {
-      background-color: #f1f3f5; /* Page background */
+      background-color: #D9EAFD; /* Page background */
     }
     .navigation {
       position: fixed;
@@ -23,7 +23,7 @@
       top: 0;
       width: 200px;
       height: 100%;
-      background-color: #f1f3f5; /* Matches page background */
+      background-color: #BCCCDC; /* Matches page background */
       padding: 20px;
       overflow-y: auto;
     }
@@ -60,7 +60,7 @@
       transform: translateY(0);
     }
     .content-box {
-      background-color: #e5e7eb; /* Slightly darker than page */
+      background-color: #BCCCDC; /* Slightly darker than page */
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -85,9 +85,9 @@
       }
     }
     .gradient-background {
-      background: linear-gradient(300deg, #FFFFFF,#D3D3D3,#808080);
+      background: linear-gradient(300deg, #BCCCDC,#F8FAFC,#9AA6B2);
       background-size: 180% 180%;
-      animation: gradient-animation 18s ease infinite;
+      animation: gradient-animation 5s ease infinite;
     }
     
     @keyframes gradient-animation {
@@ -112,36 +112,38 @@
     const data = {
       projects: [
         {
-          title: "Weather Dashboard",
+          title: "AI Chatbot",
+          description: "Built an interactive AI chatbot using React for the frontend and Node.js for the backend. Utilized Hugging Face's Inference API with the DistilGPT-2 model to provide intelligent, context-aware conversational responses.",
+          technologies: ["Hugging Face", "React", "Tailwind CSS", "Node.js"],
+          
+         
+        },
+        {
+          title: "Weather Web App",
           description: "A web app displaying real-time weather data using the OpenWeatherMap API, with responsive UI and search history. Background is a gradient color animation that changes with temperature.",
           technologies: ["Bootstrap", "OpenWeatherMap API", "JavaScript"],
           link:"https://weather-app-pi-nine-34.vercel.app"
-        },
-        {
-          title: "Task Manager",
-          description: "A simple CRUD app for managing tasks with user authentication.",
-          technologies: ["React", "Node.js", "Express.js", "MongoDB"],
-          link: "#"
+          
         },
         {
           title: "Menu & Table Boooking WebApp",
           description: "A website that allows user to view the menu and book tables at a restaurant. A mail containing the booking details is sent to the restaurant owner using mailgun.",
-          technologies: ["Python", "Flask", "Mailgun", "AWS S3 bucket"],
-          link: " #"
+          technologies: ["React", "Node.js", "Mailgun"],
+          
         },
         {
           title: "E-commerce Site",
           description: "A sample online store with product listings and cart functionality.",
           technologies: ["React", "Node.js", "Express.js", "MongoDB"],
-          link : "# "
+          
         }
       ],
       skills: [
         { category: "Programming Languages", items: ["Python", "Java", "C++"] },
-        { category: "Database", items: ["MySQL", "PostgreSQL","MongoDB"] },
+        { category: "Database", items: ["MySQL", "PostgreSQL"] },
         { category: "Front-end", items: ["HTML", "CSS", "JavaScript","Bootstrap", "React" ] },
-        { category: "Back-end", items: ["Node.js", "Express.js","Flask"] },
-        { category: "Python Libraries", items: ["Tensorflow", "Scikit-Learn", "Pandas","NumPy","Matplotlib"] },
+        { category: "Back-end", items: ["Node.js", "Express.js"] },
+        { category: "Python Libraries and Frameworks", items: ["Tensorflow","PyTorch","Pandas","NumPy","Matplotlib","Seaborn"] },
         { category: "Tools and Technologies", items: ["Git","GitHub Copilot","ChatGPT","RESTful APIs"] }
       ],
       certificates: [
