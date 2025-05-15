@@ -15,7 +15,7 @@
       scroll-behavior: smooth;
     }
     body {
-      background-color: #D9EAFD; /* Page background */
+      background-color: #9AA6B2; /* Page background */
     }
     .navigation {
       position: fixed;
@@ -60,7 +60,7 @@
       transform: translateY(0);
     }
     .content-box {
-      background-color: #BCCCDC; /* Slightly darker than page */
+      background-color: #D9EAFD; /* Slightly darker than page */
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -85,9 +85,9 @@
       }
     }
     .gradient-background {
-      background: linear-gradient(300deg, #BCCCDC,#F8FAFC,#9AA6B2);
+      background: linear-gradient(300deg, #DFF5FF,#78B7D0,#DFF5FF);
       background-size: 180% 180%;
-      animation: gradient-animation 5s ease infinite;
+      animation: gradient-animation 2s ease infinite;
     }
     
     @keyframes gradient-animation {
@@ -105,46 +105,61 @@
   </style>
 </head>
 <body>
-  <div id="root"></div>
+<div id="root"></div>
   
   <!-- Data File -->
   <script type="text/javascript">
     const data = {
       projects: [
         {
-          title: "AI Chatbot",
-          description: "Built an interactive AI chatbot using React for the frontend and Node.js for the backend. Utilized Hugging Face's Inference API with the DistilGPT-2 model to provide intelligent, context-aware conversational responses.",
-          technologies: ["Hugging Face", "React", "Tailwind CSS", "Node.js"],
-          
-         
+          title: "Chatbot about me",
+          description: "A project to showcase my skill to build a conversational chatbot (Like the ones used in ecommerce websites to assist people but this bot is about me). Built with Next.js and Dialogflow and google cloud, it features a responsive UI styled with Tailwind CSS. Deployed on Vercel, it showcases full-stack development and NLP integration.",
+          technologies: ["React","Next.js", "Dialogflow", "Tailwind CSS", "Node.js"],
+          link:"https://aboutmechatbot.vercel.app",
+          githublink:"https://github.com/Gokulkiran418/my-chatbot-app.git",
+          image:"./images/aboutmebot.png"
+        },
+         {
+          title: "E-commerce Site",
+          description: "A full-stack e-commerce platform built with React, Node.js, and GraphQL, featuring product listings, user authentication, and cart functionality. The responsive UI leverages Bootstrap, while Neon PostgreSQL ensures scalable data storage. Users can browse products, log in/register, and manage carts seamlessly.",
+          technologies: ["React","Vite","GraphQL(Apollo Client)","Bootstrap","Node.js","Express","Neon PostgreSQL"],      
+          link:"",
+          githublink:"https://github.com/Gokulkiran418/E-Commerce-Platform.git",
+          image:"./images/ecommerce.png" 
+
         },
         {
           title: "Weather Web App",
           description: "A web app displaying real-time weather data using the OpenWeatherMap API, with responsive UI and search history. Background is a gradient color animation that changes with temperature.",
           technologies: ["Bootstrap", "OpenWeatherMap API", "JavaScript"],
-          link:"https://weather-app-pi-nine-34.vercel.app"
-          
+          link:"https://weatherwebapp21.vercel.app",
+          githublink:"https://github.com/Gokulkiran418/WeatherApp.git",
+          image:"./images/Weatherapp.png"       
         },
+
         {
-          title: "Menu & Table Boooking WebApp",
-          description: "A website that allows user to view the menu and book tables at a restaurant. A mail containing the booking details is sent to the restaurant owner using mailgun.",
-          technologies: ["React", "Node.js", "Mailgun"],
-          
-        },
-        {
-          title: "E-commerce Site",
-          description: "A sample online store with product listings and cart functionality.",
-          technologies: ["React", "Node.js", "Express.js", "MongoDB"],
-          
+          title: "Task Manager",
+          description: "A simple task manager that is a to-do list web application that allows users to add, toggle, and delete tasks with a responsive design. Built with JavaScript, it features task persistence using localStorage and a modern layout with Flexbox and CSS Grid",
+          technologies: ["JavaScript", "Node.js", "Express.js", "MongoDB"],
+          image:"./images/taskmanager.png",
+          link:"",
+          githublink:"https://github.com/Gokulkiran418/TaskManagerApp.git" 
         }
       ],
+      links:{
+       github: "https://github.com/Gokulkiran418",
+       chatbot: "https://aboutmechatbot.vercel.app/",
+       weatherapp: "https://weatherwebapp21.vercel.app/",
+       ecommerce:"https://ecommercewebapp21.vercel.app/"
+      
+      },
       skills: [
-        { category: "Programming Languages", items: ["Python", "Java", "C++"] },
+        { category: "Programming Languages", items: ["Python","JavaScript"] },
         { category: "Database", items: ["MySQL", "PostgreSQL"] },
-        { category: "Front-end", items: ["HTML", "CSS", "JavaScript","Bootstrap", "React" ] },
-        { category: "Back-end", items: ["Node.js", "Express.js"] },
-        { category: "Python Libraries and Frameworks", items: ["Tensorflow","PyTorch","Pandas","NumPy","Matplotlib","Seaborn"] },
-        { category: "Tools and Technologies", items: ["Git","GitHub Copilot","ChatGPT","RESTful APIs"] }
+        { category: "Front-end", items: ["React" ,"HTML", "CSS", "JavaScript","Bootstrap" ] },
+        { category: "Back-end", items: ["Node.js", "Express.js","GraphQL","Flask"] },
+        { category: "Machine Learning", items: ["Tensorflow","PyTorch","Pandas","NumPy","Matplotlib","Seaborn"] },
+        { category: "Tools", items: ["Git","GitHub Copilot","ChatGPT"] }
       ],
       certificates: [
         { name: "Full Stack Web Development Bootcamp; Author: Angela Yu", issuer: "Udemy", date: "2025" },
@@ -157,7 +172,7 @@
       contact: {
         email: "umgokulkiran@gmail.com",
         linkedin: "https://linkedin.com/in/gokul-kiran21",
-        github: "https://github.com/gokulkiran418"
+        
       }
     };
   </script>
@@ -173,6 +188,7 @@
             <li><a href="#skills" className="text-gray-800 text-lg hover:text-blue-500">Skills</a></li>
             <li><a href="#certificates" className="text-gray-800 text-lg hover:text-blue-500">Certificates</a></li>
             <li><a href="#education" className="text-gray-800 text-lg hover:text-blue-500">Education</a></li>
+            <li><a href="#links" className="text-gray-800 text-lg hover:text-blue-500">Links</a></li>
             <li><a href="#contact" className="text-gray-800 text-lg hover:text-blue-500">Contact</a></li>
           </ul>
         </div>
@@ -182,7 +198,7 @@
     function Hero() {
       return (
         <section id="hero" className="text-gray-800 fade-in" class="gradient-background">
-          <div className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="bg-blue p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="w-64 h-64 rounded-full overflow-hidden mx-auto mb-4 border-2 border-gray-200">
               <img
                 src="images/gimage.png"
@@ -190,9 +206,9 @@
                 className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="text-4xl font-bold text-blue-600">Gokul Kiran</h1>
+            <h1 className="text-4xl font-bold text-black-600">Gokul Kiran</h1>
             <p className="text-xl mt-2 font-medium">Full-Stack Developer</p>
-            <p className="mt-4 max-w-md mx-auto text-gray-600"> Passionate about Building Innovative Web and AI Solutions</p>
+            <p className="mt-4 max-w-md mx-auto text-black-600"> Passionate about Building Innovative Web and AI Solutions</p>
             <div className="mt-6 space-x-4">
               
               <a href="#contact" className="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors duration-200">Contact Me</a>
@@ -207,6 +223,14 @@
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
           
           <div className="p-4">
+            {project.image && (
+              <img
+                src={project.image}
+                alt={`${project.title} preview`}
+                className="project-image"
+                style={{ width: "100%", height: "auto", objectFit: "cover", }}
+              />
+            )}
             <h3 className="text-xl font-semibold">{project.title}</h3>
             <p className="text-gray-600 mt-2">{project.description}</p>
             <p className="text-gray-500 mt-2">Technologies: {project.technologies.join(", ")}</p>
@@ -218,7 +242,19 @@
                   rel="noopener noreferrer"
                   className="text-blue-500 hover:underline"
                 >
-                  View My Project
+                  Website link
+                </a>
+              </p>
+            )}
+            {project.githublink && (
+              <p className="mt-2">
+                <a
+                  href={project.githublink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
+                  Github
                 </a>
               </p>
             )}
@@ -301,6 +337,7 @@
       );
     }
 
+
     function Certificates() {
       return (
         <section id="certificates" className="py-12 fade-in">
@@ -336,6 +373,27 @@
         </section>
       );
     }
+    function Links() {
+      return (
+        <section id="links" className="py-12 fade-in">
+          <h2 className="text-3xl font-bold mb-6 text-blue-600">Links</h2>
+          <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+            <p className="text-gray-600 flex items-center" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              GitHub: <a href={data.links.github} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.github}</a>
+            </p>
+            <p className="text-gray-600 flex items-center mt-2" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Weather WebApp: <a href={data.links.weatherapp} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.weatherapp}</a>
+            </p>
+            <p className="text-gray-600 flex items-center mt-2" class="contactsize">
+              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+              Chatbot About me: <a href={data.links.chatbot} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.chatbot}</a>
+            </p>
+          </div>
+        </section>
+      );
+    }
 
     function Contact() {
       return (
@@ -350,10 +408,7 @@
               <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
               LinkedIn: <a href={data.contact.linkedin} target="_blank" className="text-blue-500 hover:underline ml-1">{data.contact.linkedin}</a>
             </p>
-            <p className="text-gray-600 flex items-center mt-2" class="contactsize">
-              <span className="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-              GitHub: <a href={data.contact.github} target="_blank" className="text-blue-500 hover:underline ml-1">{data.contact.github}</a>
-            </p>
+            
           </div>
         </section>
       );
@@ -383,6 +438,7 @@
               <Skills />
               <Certificates />
               <Education />
+              <Links />
               <Contact />
             </div>
           </div>
