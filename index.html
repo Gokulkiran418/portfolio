@@ -234,7 +234,7 @@ body.dark .gradient-background {
 function Navigation({ isDark, setIsDark }) {
   return (
     <div className="navigation bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
-      <ul className="flex space-x-6 md:space-x-8">
+      <ul className="flex space-x-4 md:space-x-8 flex-nowrap">
         <li><a href="#hero" className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Home</a></li>
         <li><a href="#projects" className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Projects</a></li>
         <li><a href="#skills" className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200">Skills</a></li>
@@ -247,7 +247,7 @@ function Navigation({ isDark, setIsDark }) {
             onClick={() => setIsDark(!isDark)}
             className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
           >
-            {isDark ? 'Light mode' : 'Dark Mode'}
+            {isDark ? 'Light Mode' : 'Dark Mode'}
           </button>
         </li>
       </ul>
@@ -397,19 +397,19 @@ function Links() {
     <section id="links" className="py-12 fade-in">
       <h2 className="text-3xl font-bold mb-6 text-blue-600 dark:text-blue-400">Links</h2>
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <p className="text-gray-600 dark:text-gray-400 flex items-center">
+        <p className="text-gray-600 dark:text-gray-400 flex items-center break-words">
           <i className="fab fa-github mr-2 text-blue-500 dark:text-blue-300"></i>
-          GitHub: <a href={data.links.github} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.github}</a>
+          GitHub: <a href={data.links.github} target="_blank" className="text-blue-500 hover:underline ml-1 break-all">{data.links.github}</a>
         </p>
-        <p className="text-gray-600 dark:text-gray-400 flex items-center mt-2">
+        <p className="text-gray-600 dark:text-gray-400 flex items-center mt-2 break-words">
           <i className="fas fa-cloud mr-2 text-blue-500 dark:text-blue-300"></i>
-          Weather WebApp: <a href={data.links.weatherapp} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.weatherapp}</a>
+          Weather WebApp: <a href={data.links.weatherapp} target="_blank" className="text-blue-500 hover:underline ml-1 break-all">{data.links.weatherapp}</a>
         </p>
-        <p className="text-gray-600 dark:text-gray-400 flex items-center mt-2">
+        <p className="text-gray-600 dark:text-gray-400 flex items-center mt-2 break-words">
           <i className="fas fa-robot mr-2 text-blue-500 dark:text-blue-300"></i>
-          Chatbot About me: <a href={data.links.chatbot} target="_blank" className="text-blue-500 hover:underline ml-1">{data.links.chatbot}</a>
+          Chatbot About me: <a href={data.links.chatbot} target="_blank" className="text-blue-500 hover:underline ml-1 break-all">{data.links.chatbot}</a>
         </p>
-      
+       
       </div>
     </section>
   );
