@@ -35,14 +35,18 @@ body.dark {
   left: 0;
   right: 0;
   height: 60px;
-  background-color: #E5E7EB; /* Light mode nav */
+  background: linear-gradient(180deg, white, grey, white);
+  background-size: 100% 200%; /* Adjusted for vertical animation */
+  animation: vertical-gradient-animation 3s ease infinite;/* Light mode nav */
   padding: 0 20px;
   z-index: 1000;
   display: flex;
   align-items: center;
 }
 body.dark .navigation {
-  background-color: #2D3748; /* Dark mode nav */
+    background: linear-gradient(180deg,#2D3748, black, #2D3748);
+  background-size: 100% 200%; /* Adjusted for vertical animation */
+  animation: vertical-gradient-animation 3s ease infinite; /* Dark mode nav */
 }
 .main-content {
   margin-top: 60px; /* Space for fixed navbar */
@@ -57,7 +61,7 @@ body.dark .navigation {
   height: 100vh;
   background: linear-gradient(180deg, white, grey, white);
   background-size: 100% 200%; /* Adjusted for vertical animation */
-  animation: vertical-gradient-animation 2s ease infinite;
+  animation: vertical-gradient-animation 3s ease infinite;
   opacity: 0.7;
   transition: opacity 0.3s ease, width 0.3s ease;
   z-index: 10; /* Lowered to avoid conflicts */
@@ -65,7 +69,7 @@ body.dark .navigation {
 body.dark .decorative-sidebar {
   background: linear-gradient(180deg,  #2D3748, black, #2D3748);
   background-size: 100% 200%; /* Adjusted for vertical animation */
-  animation: vertical-gradient-animation 2s ease infinite;
+  animation: vertical-gradient-animation 3s ease infinite;
 }
 .decorative-sidebar:hover {
   opacity: 1;
@@ -98,12 +102,12 @@ body.dark .content-box {
 .gradient-background {
   background: linear-gradient(300deg, white, grey, white);
   background-size: 180% 180%;
-  animation: gradient-animation 2s ease infinite;
+  animation: gradient-animation 3s ease infinite;
 }
 body.dark .gradient-background {
-  background: linear-gradient(300deg, #2D3748, #4A5568, #2D3748);
+  background: linear-gradient(300deg, black,#2D3748, #2D3748);
    background-size: 180% 180%;
-    animation: gradient-animation 2s ease infinite;
+    animation: gradient-animation 3s ease infinite;
 }
 @keyframes gradient-animation {
   0% { background-position: 0% 50%; }
@@ -118,10 +122,15 @@ body.dark .gradient-background {
 @media (max-width: 768px) {
   .navigation {
     height: auto;
-    padding: 10px 20px;
+    padding: 10px 10px; /* Reduced padding */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  .navigation ul {
+    font-size: 0.9rem; /* Slightly smaller font */
   }
   .main-content {
-    margin-top: 80px; /* Adjust for taller navbar on mobile */
+    margin-top: 60px; /* Adjusted for navbar height */
     margin-left: 0; /* No sidebar on mobile */
   }
   .decorative-sidebar {
@@ -462,7 +471,7 @@ function App() {
           <Contact />
         </div>
         <footer className="py-4 text-center text-gray-600 dark:text-gray-400">
-          <p>© 2025 Your Name. All rights reserved.</p>
+          <p>© 2025 Gokul Kiran. All rights reserved.</p>
         </footer>
       </div>
     </div>
