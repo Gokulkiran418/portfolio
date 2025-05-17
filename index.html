@@ -151,6 +151,15 @@ body.dark .gradient-background {
     // Each project should have title, description, technologies (array), link, githublink, and image.
     projects: [
         {
+          title: "Heart Disease Predictor",
+          description: "A Django-based web app using a RandomForestClassifier to predict heart disease risk from 13 health metrics. Features a responsive Bootstrap 5 interface with a dynamic form and educational heart health content. Securely configured with environment variables, showcasing full-stack and machine learning expertise.",
+          technologies: ["Python","Django","scikit-learn","pandas","Bootstrap 5", "HTML/CSS"],
+          link:"",
+          githublink:"https://github.com/Gokulkiran418/Heart-Disease-Predictor.git",
+          image:"",
+          video:"./images/hdpredict.mp4"
+        },
+        {
           title: "Chatbot about me",
           description: "A project to showcase my skill to build a conversational chatbot (Like the ones used in ecommerce websites to assist people but this bot is about me). Built with Next.js and Dialogflow and google cloud, it features a responsive UI styled with Tailwind CSS. Deployed on Vercel, it showcases full-stack development and NLP integration.",
           technologies: ["React","Next.js", "Dialogflow", "Tailwind CSS", "Node.js"],
@@ -281,15 +290,27 @@ function Hero() {
     return (
       <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl">
         <div className="p-4">
-          {project.image && (
-            <img
-              src={project.image}
-              alt={`${project.title} preview`}
-              className="project-image"
-              style={{ width: "100%", height: "auto", objectFit: "cover" }}
-              loading="lazy"
-            />
-          )}
+          {project.video ? (
+          <video
+            src={project.video}
+            alt={`${project.title} preview`}
+            className="project-video"
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+            controls
+            muted
+            autoPlay
+            loop
+            loading="lazy"
+          />
+        ) : project.image ? (
+          <img
+            src={project.image}
+            alt={`${project.title} preview`}
+            className="project-image"
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+            loading="lazy"
+          />
+        ) : null}
           <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">{project.title}</h3>
           <p className="text-gray-600 dark:text-gray-400 mt-2">{project.description}</p>
           <p className="text-gray-500 dark:text-gray-300 mt-2">Technologies: {project.technologies.join(", ")}</p>
